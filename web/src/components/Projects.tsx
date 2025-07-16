@@ -1,17 +1,38 @@
-
 import { Share } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/projects/')
-      .then(response => response.json())
-      .then(data => setProjects(data))
-      .catch(error => console.error('Error fetching projects:', error));
+    const fetchProjects = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/projects/`); // Ortam değişkeni kullanıldı
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setProjects(data);
+      } catch (e: any) {
+        setError(e.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
   }, []);
+
+  if (loading) {
+    return <div className="text-center py-20">Projeler yükleniyor...</div>;
+  }
+
+  if (error) {
+    return <div className="text-center py-20 text-red-500">Projeler yüklenirken bir hata oluştu: {error}</div>;
+  }
 
   return (
     <section id="projects" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
@@ -34,7 +55,7 @@ const Projects = () => {
               <div className={`h-48 bg-gradient-to-r ${project.gradient} flex items-center justify-center`}>
                 <Share size={48} className="text-white" />
               </div>
-              
+
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">
                   {project.title}
@@ -42,7 +63,7 @@ const Projects = () => {
                 <p className="text-gray-600 mb-4 leading-relaxed">
                   {project.description}
                 </p>
-                
+
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tech.map((tech, techIndex) => (
                     <span
@@ -53,7 +74,7 @@ const Projects = () => {
                     </span>
                   ))}
                 </div>
-                
+
                 <Link to={`/project/${project.id}`} className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2 px-4 rounded-lg font-semibold hover:shadow-lg transition-shadow duration-300">
                   Detayları Gör
                 </Link>

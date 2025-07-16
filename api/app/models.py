@@ -16,3 +16,12 @@ class Project(Base):
     description = Column(String)
     tech = Column(JSON)
     gradient = Column(String)
+    github_url = Column(String, nullable=True)
+
+class ContactMessageModel(Base): # Yeni model: İletişim mesajlarını saklamak için
+    __tablename__ = "contact_messages"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, index=True)
+    email = Column(String)
+    message = Column(String)

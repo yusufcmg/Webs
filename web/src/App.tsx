@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import Post from "./pages/Post"; // Post bileşeni için düzeltilmiş içe aktarma yolu
 
 import Project from './pages/Project';
 
@@ -20,7 +21,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/post/:postId" element={<Post />} />
           <Route path="/project/:projectId" element={<Project />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          {/* TÜM ÖZEL ROTALARI YAKALAYICI "*" ROTASININ ÜSTÜNE EKLEYİN */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

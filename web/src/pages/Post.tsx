@@ -5,17 +5,39 @@ import Footer from '@/components/Footer';
 
 const Post = () => {
   const { postId } = useParams();
-  const [post, setPost] = useState(null);
+  const [post, setPost] = useState<any>(null); // 'any' tipi geçici olarak kullanıldı, Post şemasına uygun tip belirlenebilir
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/posts/${postId}`)
-      .then(response => response.json())
-      .then(data => setPost(data))
-      .catch(error => console.error('Error fetching post:', error));
+    const fetchPost = async () => {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/posts/${postId}`); // Ortam değişkeni kullanıldı
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setPost(data);
+      } catch (e: any) {
+        setError(e.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPost();
   }, [postId]);
 
+  if (loading) {
+    return <div className="text-center py-20">Yükleniyor...</div>;
+  }
+
+  if (error) {
+    return <div className="text-center py-20 text-red-500">Yazı yüklenirken bir hata oluştu: {error}</div>;
+  }
+
   if (!post) {
-    return <div>Yükleniyor...</div>;
+    return <div className="text-center py-20">Yazı bulunamadı.</div>;
   }
 
   return (
