@@ -9,7 +9,7 @@ const Blog = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/posts/`); // Ortam değişkeni kullanıldı
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/posts/`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -56,12 +56,10 @@ const Blog = () => {
                   {post.title}
                 </h3>
                 <p className="text-gray-600 mb-4 leading-relaxed">
-                  {/* Blog yazılarının tam içeriği yerine kısa bir özet gösterebilirsiniz */}
                   {post.content.substring(0, 150)}...
                 </p>
 
                 <div className="flex items-center justify-between">
-                  {/* post.date alanı backend'den gelmiyorsa varsayılan bir tarih gösterir */}
                   <span className="text-gray-500 text-sm">{post.date || new Date().toLocaleDateString()}</span>
                   <Link to={`/post/${post.id}`} className="text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300">
                     Devamını Oku →
@@ -74,9 +72,10 @@ const Blog = () => {
 
         <div className="text-center mt-12">
           <p className="text-gray-600 mb-6">Daha fazla yazı yakında...</p>
-          <button className="bg-white text-gray-800 px-8 py-3 rounded-full font-semibold border-2 border-gray-200 hover:border-blue-300 hover:text-blue-600 transition-colors duration-300">
+          {/* Butona Link eklendi */}
+          <Link to="/blog/all" className="bg-white text-gray-800 px-8 py-3 rounded-full font-semibold border-2 border-gray-200 hover:border-blue-300 hover:text-blue-600 transition-colors duration-300 inline-block">
             Tüm Yazıları Gör
-          </button>
+          </Link>
         </div>
       </div>
     </section>

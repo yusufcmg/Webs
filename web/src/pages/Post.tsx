@@ -5,14 +5,14 @@ import Footer from '@/components/Footer';
 
 const Post = () => {
   const { postId } = useParams();
-  const [post, setPost] = useState<any>(null); // 'any' tipi geçici olarak kullanıldı, Post şemasına uygun tip belirlenebilir
+  const [post, setPost] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/posts/${postId}`); // Ortam değişkeni kullanıldı
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/posts/${postId}`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

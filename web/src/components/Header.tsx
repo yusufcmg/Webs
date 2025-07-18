@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState } from 'react'; // useEffect kaldırıldı
 import { Menu, X } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom'; // Link ve useLocation import edildi
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation(); // Mevcut lokasyonu almak için
+  // isLoggedIn state'i ve useEffect artık gerekli değil
+  const location = useLocation();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -57,6 +58,7 @@ const Header = () => {
             <Link to="/" onClick={(e) => handleNavLinkClick(e, 'contact')} className="text-gray-700 hover:text-blue-600 transition-colors duration-300 font-medium">
               İletişim
             </Link>
+            {/* Admin/Giriş Yap linkleri artık burada olmayacak */}
           </nav>
 
           {/* Mobile menu button */}
@@ -89,6 +91,7 @@ const Header = () => {
               <Link to="/" onClick={(e) => handleNavLinkClick(e, 'contact')} className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-300">
                 İletişim
               </Link>
+              {/* Admin/Giriş Yap linkleri artık burada olmayacak */}
             </div>
           </div>
         )}

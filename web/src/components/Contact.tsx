@@ -1,14 +1,14 @@
 import { MessageSquare, User, Share } from 'lucide-react';
-import React, { useState } from 'react'; // useState hook'unu import ettik
+import React, { useState } from 'react';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ // Form verileri için state
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
-  const [submissionStatus, setSubmissionStatus] = useState(''); // Form gönderim durumu
-  const [submissionError, setSubmissionError] = useState(''); // Form gönderim hatası
+  const [submissionStatus, setSubmissionStatus] = useState('');
+  const [submissionError, setSubmissionError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -20,7 +20,7 @@ const Contact = () => {
     setSubmissionError('');
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/contact/`, { // Yeni contact uç noktasına POST isteği
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/contact/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ const Contact = () => {
 
       if (response.ok) {
         setSubmissionStatus('Mesajınız başarıyla gönderildi!');
-        setFormData({ name: '', email: '', message: '' }); // Formu temizle
+        setFormData({ name: '', email: '', message: '' });
       } else {
         const errorData = await response.json();
         throw new Error(errorData.detail || 'Mesaj gönderilirken bir hata oluştu.');
@@ -69,7 +69,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold">Email</h4>
-                  <p className="text-blue-100">ornek@email.com</p> {/* Bu alanı kendi e-posta adresinizle güncelleyin */}
+                  <p className="text-blue-100">ornek@email.com</p>
                 </div>
               </div>
 
@@ -79,7 +79,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold">GitHub</h4>
-                  <p className="text-blue-100">github.com/kullaniciadiniz</p> {/* Bu alanı kendi GitHub adresinizle güncelleyin */}
+                  <p className="text-blue-100">github.com/kullaniciadiniz</p>
                 </div>
               </div>
 
@@ -89,7 +89,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold">LinkedIn</h4>
-                  <p className="text-blue-100">linkedin.com/in/profiliniz</p> {/* Bu alanı kendi LinkedIn adresinizle güncelleyin */}
+                  <p className="text-blue-100">linkedin.com/in/profiliniz</p>
                 </div>
               </div>
             </div>
@@ -97,7 +97,7 @@ const Contact = () => {
 
           <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8">
             <h3 className="text-2xl font-bold mb-6">Mesaj Gönder</h3>
-            <form onSubmit={handleSubmit} className="space-y-6"> {/* handleSubmit eklendi */}
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">
                   Adınız
@@ -107,7 +107,7 @@ const Contact = () => {
                   id="name"
                   className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-white/70"
                   placeholder="Adınızı yazın"
-                  value={formData.name} // value ve onChange eklendi
+                  value={formData.name}
                   onChange={handleChange}
                   required
                 />
@@ -122,7 +122,7 @@ const Contact = () => {
                   id="email"
                   className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-white/70"
                   placeholder="email@ornek.com"
-                  value={formData.email} // value ve onChange eklendi
+                  value={formData.email}
                   onChange={handleChange}
                   required
                 />
@@ -137,7 +137,7 @@ const Contact = () => {
                   rows={4}
                   className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-white/70 resize-none"
                   placeholder="Mesajınızı buraya yazın..."
-                  value={formData.message} // value ve onChange eklendi
+                  value={formData.message}
                   onChange={handleChange}
                   required
                 ></textarea>

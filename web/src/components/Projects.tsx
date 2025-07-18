@@ -10,7 +10,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/projects/`); // Ortam değişkeni kullanıldı
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/projects/`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -65,7 +65,7 @@ const Projects = () => {
                 </p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tech.map((tech, techIndex) => (
+                  {project.tech.map((tech: string, techIndex: number) => (
                     <span
                       key={techIndex}
                       className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
@@ -85,9 +85,10 @@ const Projects = () => {
 
         <div className="text-center mt-12">
           <p className="text-gray-600 mb-6">Daha fazla proje yakında...</p>
-          <button className="bg-white text-gray-800 px-8 py-3 rounded-full font-semibold border-2 border-gray-200 hover:border-blue-300 hover:text-blue-600 transition-colors duration-300">
+          {/* Butona Link eklendi */}
+          <Link to="/projects/all" className="bg-white text-gray-800 px-8 py-3 rounded-full font-semibold border-2 border-gray-200 hover:border-blue-300 hover:text-blue-600 transition-colors duration-300 inline-block">
             Tüm Projeleri Gör
-          </button>
+          </Link>
         </div>
       </div>
     </section>

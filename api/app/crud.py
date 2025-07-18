@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
-from . import models, schemas
+from . import models, schemas # auth modülü artık import edilmeyecek
 
+# --- Post CRUD ---
 def get_post(db: Session, post_id: int):
     return db.query(models.Post).filter(models.Post.id == post_id).first()
 
@@ -30,6 +31,7 @@ def delete_post(db: Session, post_id: int):
         db.commit()
     return db_post
 
+# --- Project CRUD ---
 def get_project(db: Session, project_id: int):
     return db.query(models.Project).filter(models.Project.id == project_id).first()
 
@@ -59,7 +61,8 @@ def delete_project(db: Session, project_id: int):
         db.commit()
     return db_project
 
-def create_contact_message(db: Session, message: schemas.ContactMessage): # Yeni: Mesajı kaydetme
+# --- Contact Message CRUD ---
+def create_contact_message(db: Session, message: schemas.ContactMessage):
     db_message = models.ContactMessageModel(
         name=message.name,
         email=message.email,
@@ -70,5 +73,7 @@ def create_contact_message(db: Session, message: schemas.ContactMessage): # Yeni
     db.refresh(db_message)
     return db_message
 
-def get_contact_messages(db: Session, skip: int = 0, limit: int = 100): # Yeni: Kaydedilen mesajları alma
+def get_contact_messages(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.ContactMessageModel).offset(skip).limit(limit).all()
+
+# Kullanıcı CRUD fonksiyonları artık burada yok.

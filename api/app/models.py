@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, JSON
+from sqlalchemy import Column, Integer, String, JSON, Boolean # Boolean artık kullanılmasa da import kalabilir
 from .database import Base
 
 class Post(Base):
@@ -18,10 +18,12 @@ class Project(Base):
     gradient = Column(String)
     github_url = Column(String, nullable=True)
 
-class ContactMessageModel(Base): # Yeni model: İletişim mesajlarını saklamak için
+class ContactMessageModel(Base):
     __tablename__ = "contact_messages"
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
     email = Column(String)
     message = Column(String)
+
+# User modeli artık burada yok.
