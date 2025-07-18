@@ -42,21 +42,21 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-blue-900 to-purple-900 text-white">
+    <section id="contact" className="py-20 bg-gradient-to-br from-blue-900 to-purple-900 text-white dark:from-gray-950 dark:to-purple-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 dark:text-gray-50">
             İletişim
           </h2>
-          <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+          <p className="text-xl text-blue-100 max-w-3xl mx-auto dark:text-gray-400">
             Projeleriniz için işbirliği yapmak veya soru sormak için benimle iletişime geçin
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h3 className="text-3xl font-bold mb-6">Birlikte Çalışalım</h3>
-            <p className="text-blue-100 text-lg leading-relaxed mb-8">
+            <h3 className="text-3xl font-bold mb-6 dark:text-gray-50">Birlikte Çalışalım</h3>
+            <p className="text-blue-100 text-lg leading-relaxed mb-8 dark:text-gray-300">
               Yeni projeler ve öğrenme fırsatları için her zaman açığım. Web geliştirme konusunda
               işbirliği yapmak veya deneyim paylaşmak istiyorsanız, benimle iletişime geçmekten
               çekinmeyin.
@@ -69,7 +69,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold">Email</h4>
-                  <p className="text-blue-100">ornek@email.com</p>
+                  <p className="text-blue-100 dark:text-gray-400">ornek@email.com</p>
                 </div>
               </div>
 
@@ -79,7 +79,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold">GitHub</h4>
-                  <p className="text-blue-100">github.com/kullaniciadiniz</p>
+                  <p className="text-blue-100 dark:text-gray-400">github.com/kullaniciadiniz</p>
                 </div>
               </div>
 
@@ -89,13 +89,13 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold">LinkedIn</h4>
-                  <p className="text-blue-100">linkedin.com/in/profiliniz</p>
+                  <p className="text-blue-100 dark:text-gray-400">linkedin.com/in/profiliniz</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8">
+          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 dark:bg-gray-800/20">
             <h3 className="text-2xl font-bold mb-6">Mesaj Gönder</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
@@ -105,7 +105,7 @@ const Contact = () => {
                 <input
                   type="text"
                   id="name"
-                  className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-white/70"
+                  className={`w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-white/70 dark:bg-gray-700/30 dark:border-gray-600/50 dark:focus:ring-blue-300 dark:placeholder-gray-400`}
                   placeholder="Adınızı yazın"
                   value={formData.name}
                   onChange={handleChange}
@@ -120,7 +120,7 @@ const Contact = () => {
                 <input
                   type="email"
                   id="email"
-                  className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-white/70"
+                  className={`w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-white/70 dark:bg-gray-700/30 dark:border-gray-600/50 dark:focus:ring-blue-300 dark:placeholder-gray-400`}
                   placeholder="email@ornek.com"
                   value={formData.email}
                   onChange={handleChange}
@@ -135,7 +135,7 @@ const Contact = () => {
                 <textarea
                   id="message"
                   rows={4}
-                  className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-white/70 resize-none"
+                  className={`w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent placeholder-white/70 resize-none dark:bg-gray-700/30 dark:border-gray-600/50 dark:focus:ring-blue-300 dark:placeholder-gray-400`}
                   placeholder="Mesajınızı buraya yazın..."
                   value={formData.message}
                   onChange={handleChange}

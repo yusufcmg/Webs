@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -104,7 +103,21 @@ export default {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.8s ease-out forwards'
-			}
+			},
+			// Yeni animasyon gecikmeleri eklendi
+			animationDelay: {
+				0: '0ms',
+				100: '100ms',
+				200: '200ms',
+				300: '300ms',
+				400: '400ms',
+				500: '500ms',
+				600: '600ms',
+				700: '700ms',
+				800: '800ms',
+				900: '900ms',
+				1000: '1000ms',
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],

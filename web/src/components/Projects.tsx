@@ -27,21 +27,21 @@ const Projects = () => {
   }, []);
 
   if (loading) {
-    return <div className="text-center py-20">Projeler yükleniyor...</div>;
+    return <div className="text-center py-20 dark:text-gray-300">Projeler yükleniyor...</div>;
   }
 
   if (error) {
-    return <div className="text-center py-20 text-red-500">Projeler yüklenirken bir hata oluştu: {error}</div>;
+    return <div className="text-center py-20 text-red-500 dark:text-red-400">Projeler yüklenirken bir hata oluştu: {error}</div>;
   }
 
   return (
-    <section id="projects" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+    <section id="projects" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 dark:to-blue-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 dark:text-gray-50">
             Projelerim
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto dark:text-gray-400">
             Öğrenme yolculuğumda geliştirdiğim projeler ve deneyimlerim
           </p>
         </div>
@@ -50,17 +50,17 @@ const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105"
+              className={`bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 animate-fade-in animation-delay-${index * 100} dark:bg-gray-800 dark:shadow-xl`}
             >
               <div className={`h-48 bg-gradient-to-r ${project.gradient} flex items-center justify-center`}>
                 <Share size={48} className="text-white" />
               </div>
 
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 dark:text-gray-50">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <p className="text-gray-600 mb-4 leading-relaxed dark:text-gray-300">
                   {project.description}
                 </p>
 
@@ -68,7 +68,7 @@ const Projects = () => {
                   {project.tech.map((tech: string, techIndex: number) => (
                     <span
                       key={techIndex}
-                      className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
+                      className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium dark:bg-blue-900 dark:text-blue-100"
                     >
                       {tech}
                     </span>
@@ -84,9 +84,8 @@ const Projects = () => {
         </div>
 
         <div className="text-center mt-12">
-          <p className="text-gray-600 mb-6">Daha fazla proje yakında...</p>
-          {/* Butona Link eklendi */}
-          <Link to="/projects/all" className="bg-white text-gray-800 px-8 py-3 rounded-full font-semibold border-2 border-gray-200 hover:border-blue-300 hover:text-blue-600 transition-colors duration-300 inline-block">
+          <p className="text-gray-600 mb-6 dark:text-gray-400">Daha fazla proje yakında...</p>
+          <Link to="/projects/all" className="bg-white text-gray-800 px-8 py-3 rounded-full font-semibold border-2 border-gray-200 hover:border-blue-300 hover:text-blue-600 transition-colors duration-300 inline-block dark:bg-gray-800 dark:text-gray-50 dark:border-gray-700 dark:hover:border-blue-500 dark:hover:text-blue-400">
             Tüm Projeleri Gör
           </Link>
         </div>

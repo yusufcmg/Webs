@@ -29,24 +29,24 @@ const Post = () => {
   }, [postId]);
 
   if (loading) {
-    return <div className="text-center py-20">Yükleniyor...</div>;
+    return <div className="text-center py-20 dark:text-gray-300">Yükleniyor...</div>;
   }
 
   if (error) {
-    return <div className="text-center py-20 text-red-500">Yazı yüklenirken bir hata oluştu: {error}</div>;
+    return <div className="text-center py-20 text-red-500 dark:text-red-400">Yazı yüklenirken bir hata oluştu: {error}</div>;
   }
 
   if (!post) {
-    return <div className="text-center py-20">Yazı bulunamadı.</div>;
+    return <div className="text-center py-20 dark:text-gray-300">Yazı bulunamadı.</div>;
   }
 
   return (
     <>
       <Header />
-      <main className="py-20 px-4 sm:px-6 lg:px-8">
+      <main className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900"> {/* dark:bg eklendi */}
         <article className="max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{post.title}</h1>
-          <p className="text-gray-600 mb-8">{post.content}</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 dark:text-gray-50">{post.title}</h1> {/* dark:text eklendi */}
+          <p className="text-gray-600 mb-8 dark:text-gray-300">{post.content}</p> {/* dark:text eklendi */}
         </article>
       </main>
       <Footer />

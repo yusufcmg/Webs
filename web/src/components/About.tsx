@@ -1,4 +1,3 @@
-
 import { Book, Users, MessageSquare } from 'lucide-react';
 
 const About = () => {
@@ -14,48 +13,33 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-white">
+    <section id="about" className="py-20 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 dark:text-gray-50">
             Hakkımda
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto dark:text-gray-400">
             Yazılım dünyasına yeni adım atan tutkulu bir geliştiriciyim
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Yolculuğum</h3>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                Yazılım geliştirme serüvenime yeni başladım ve her gün öğrendiğim yeni teknolojilerle 
-                kendimi geliştiriyorum. Modern web teknolojileri üzerine odaklanarak, kullanıcı dostu 
-                ve etkileyici web deneyimleri oluşturmaya çalışıyorum.
-              </p>
-              <p className="text-gray-700 leading-relaxed">
-                Sürekli öğrenmeye ve gelişmeye odaklı yaklaşımımla, yazılım dünyasında iz bırakmak 
-                için çalışıyorum. Her proje benim için yeni bir öğrenme fırsatı.
-              </p>
-            </div>
-          </div>
-
+        {/* Feature Cards */}
+        <div className="grid md:grid-cols-2 gap-12 items-center mt-12">
+          <div></div> {/* Empty for alignment with the left card above */}
           <div>
             <div className="grid grid-cols-1 gap-6">
-              <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-6 rounded-xl text-white transform hover:scale-105 transition-transform duration-300">
+              <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-6 rounded-xl text-white transform hover:scale-105 transition-transform duration-300 animate-fade-in animation-delay-300">
                 <Book className="w-8 h-8 mb-4" />
                 <h4 className="text-xl font-semibold mb-2">Sürekli Öğrenme</h4>
                 <p>Her gün yeni teknolojiler ve en iyi uygulamaları öğreniyorum</p>
               </div>
-              
-              <div className="bg-gradient-to-r from-purple-500 to-purple-600 p-6 rounded-xl text-white transform hover:scale-105 transition-transform duration-300">
+              <div className="bg-gradient-to-r from-purple-500 to-purple-600 p-6 rounded-xl text-white transform hover:scale-105 transition-transform duration-300 animate-fade-in animation-delay-400">
                 <Users className="w-8 h-8 mb-4" />
                 <h4 className="text-xl font-semibold mb-2">Takım Çalışması</h4>
                 <p>İşbirlikçi yaklaşımla projeler geliştirir ve deneyim paylaşırım</p>
               </div>
-              
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6 rounded-xl text-white transform hover:scale-105 transition-transform duration-300">
+              <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6 rounded-xl text-white transform hover:scale-105 transition-transform duration-300 animate-fade-in animation-delay-500">
                 <MessageSquare className="w-8 h-8 mb-4" />
                 <h4 className="text-xl font-semibold mb-2">İletişim</h4>
                 <p>Açık iletişim ve geri bildirimlerle sürekli gelişim sağlarım</p>
@@ -64,15 +48,16 @@ const About = () => {
           </div>
         </div>
 
+        {/* Skills Grid */}
         <div className="mt-16">
-          <h3 className="text-3xl font-bold text-center text-gray-900 mb-8">Teknolojiler</h3>
+          <h3 className="text-3xl font-bold text-center text-gray-900 mb-8 dark:text-gray-50">Teknolojiler</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {skills.map((skill, index) => (
               <div
                 key={index}
-                className="bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-lg text-center border border-blue-100 hover:border-blue-300 transition-colors duration-300"
+                className="bg-gradient-to-r from-blue-100 to-purple-100 p-6 rounded-xl text-gray-900 font-semibold text-center shadow-md dark:from-blue-900 dark:to-purple-900 dark:text-gray-50 dark:shadow-xl"
               >
-                <span className="font-semibold text-gray-800">{skill}</span>
+                {skill}
               </div>
             ))}
           </div>
